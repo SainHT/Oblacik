@@ -1,5 +1,7 @@
 <?php
-require 'libs/Smarty.class.php';
+require 'libs/Smarty.class.php';  # framework
+require 'dbconnect.php';  # db_connection
+
 $smarty = new \Smarty\Smarty;
 
 $smarty->debugging = false;
