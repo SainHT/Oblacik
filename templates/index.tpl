@@ -9,7 +9,7 @@
         Title: {#title#|capitalize}
         {if #bold#}</b>{/if}
 
-    The current date and time is {$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}
+    The current date and time was {$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}
 
     Example of accessing server environment variable SERVER_NAME: {$smarty.server.SERVER_NAME}
 
