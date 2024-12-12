@@ -17,7 +17,7 @@ $smarty->assign(
         array("A", "B", "C", "L"),
         array("o", "F", "G", "H"),
         array("I", "J", "K", "L"),
-        array("M", "N", "O", "P")
+        array("M", "N", "O", "Q")
     )
 );
 $smarty->assign(
