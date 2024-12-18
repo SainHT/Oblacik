@@ -1,6 +1,7 @@
 <?php
 require 'libs/Smarty.class.php';  # framework
 require 'dbconnect.php';  # db_connection
+session_start();
 
 $smarty = new \Smarty\Smarty;
 
@@ -31,4 +32,30 @@ $smarty->caching = false;
 // $smarty->assign("option_output", array("New York", "Nebraska", "Kansas", "Iowa", "Oklahoma", "Texas"));
 // $smarty->assign("option_selected", "NE");
 
-$smarty->display('index.tpl');
+$code = isset($_SESSION['code']) ? $_SESSION['code'] : NULL;
+if ($code == NULL) {
+    $smarty->assign('message', '');
+} 
+else {
+    if ($code == 0) {
+        $smarty->assign('message', 'File uploaded successfully');
+    } 
+    else {
+        $smarty->assign('message', 'File upload failed');
+        $smarty->assign('data', $_SESSION["data"]);
+    }
+    $_SESSION['code'] = NULL;
+}
+
+$page = isset($_GET['page']) ? $_GET['page'] : 'index';
+$pages = array(
+    'reg' => 'register.tpl',
+    'log' => 'login.tpl',
+    'upld' => 'upload.tpl'
+);
+
+if (array_key_exists($page, $pages)) {
+    $smarty->display($pages[$page]);
+} else {
+    $smarty->display('index.tpl');
+}
