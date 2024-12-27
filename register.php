@@ -8,21 +8,45 @@ session_start();
 $username = $_POST['username'];
 $password = $_POST['password'];
 $r_password = $_POST['r_password'];
-$password = password_hash($password, PASSWORD_BCRYPT);
-$r_password = password_hash($r_password, PASSWORD_BCRYPT);
+$password = password_hash($password, PASSWORD_DEFAULT);
+
 $email = $_POST['email'];
 
-if ($password == $r_password) {
-    $sql = "INSERT INTO `users` (`username`, `password`, `email`) VALUES ('$username', '$password', '$email')";
-    $result = $conn->query($sql);
+if (password_verify($r_password, $password)) {
+
+    $email_check_sql = "SELECT * FROM `oblacik_users` WHERE `email` = '$email'";
+    $email_check_result = $db->query($email_check_sql);
+    if ($email_check_result->num_rows > 0) {
+        $_SESSION['reg-code'] = 2;
+        header('Location: index.php?page=reg');
+        exit();
+    }
+
+    $sql = "INSERT INTO `oblacik_users` (`name`, `password`, `email`) VALUES ('$username', '$password', '$email')";
+    $result = $db->query($sql);
     if ($result) {
-        $smarty->assign('message', 'Registration successful');
+        $_SESSION['reg-code'] = 0;
     } else {
-        $smarty->assign('message', 'Registration failed');
+        $_SESSION['reg-code'] = 1;
     }
 } else {
-    $smarty->assign('message', 'Passwords do not match');
+    $_SESSION['reg-code'] = 3;
 }
 
-header('Location: index.php?page=log');
+if ($_SESSION['reg-code'] == 0) {
+    $sql = "SELECT * FROM `oblacik_users` WHERE `email` = '$email'";
+    $result = $db->query($sql);
+    foreach ($result as $row) {
+        $_SESSION['user'] = $row['name'];
+        $_SESSION['id'] = $row['id'];
+    }
+    header('Location: index.php?page=log');
+    exit();
+}
+else {
+    header('Location: index.php?page=reg');
+    exit();
+}
 ?>
+
+//Stormblessed -> KnightsRadiant

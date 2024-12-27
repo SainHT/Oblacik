@@ -1,6 +1,7 @@
 {include file="header.tpl"}
 
 <div class="login">
+    {$reg_message|default:''}
     <div class="form">
         <form action="register.php" method="post">
             <input type="text"     name="username" placeholder="username" id="username" 

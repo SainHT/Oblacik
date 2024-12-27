@@ -8,45 +8,51 @@ $smarty = new \Smarty\Smarty;
 $smarty->debugging = false;
 $smarty->caching = false;
 
-// demo
-// $smarty->assign("Name", "Fred Irving Johnathan Bradley Peppergill", true);
-// $smarty->assign("FirstName", array("John", "Mary", "James", "Henry"));
-// $smarty->assign("LastName", array("Doe", "Smith", "Johnson", "Case"));
-// $smarty->assign(
-//     "Class",
-//     array(
-//         array("A", "B", "C", "L"),
-//         array("o", "F", "G", "H"),
-//         array("I", "J", "K", "L"),
-//         array("M", "N", "O", "Q")
-//     )
-// );
-// $smarty->assign(
-//     "contacts",
-//     array(
-//         array("phone" => "1", "fax" => "2", "cell" => "3"),
-//         array("phone" => "555-4444", "fax" => "555-3333", "cell" => "760-1234")
-//     )
-// );
-// $smarty->assign("option_values", array("NY", "NE", "KS", "IA", "OK", "TX"));
-// $smarty->assign("option_output", array("New York", "Nebraska", "Kansas", "Iowa", "Oklahoma", "Texas"));
-// $smarty->assign("option_selected", "NE");
-
-$code = isset($_SESSION['code']) ? $_SESSION['code'] : NULL;
-if ($code == NULL) {
-    $smarty->assign('message', '');
+//logging
+$logged = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
+if ($logged == NULL) {
+    $smarty->assign('logged', false);
 } 
 else {
+    $smarty->assign('logged', true);
+    $smarty->assign('user', $_SESSION['user']);
+}
+
+//register
+$reg_code = isset($_SESSION['reg-code']) ? $_SESSION['reg-code'] : NULL;
+$reg_msg = array(
+    0 => 'Registration successful',
+    1 => 'Registration failed',
+    2 => 'Email already in use',
+    3 => 'Passwords do not match'
+);
+
+if(array_key_exists($reg_code, $reg_msg)) {
+    $smarty->assign('reg_message', $reg_msg[$reg_code]);
+} 
+else {
+    $smarty->assign('reg_message', '');
+}
+
+//upload
+$code = isset($_SESSION['code']) ? $_SESSION['code'] : NULL;
+$code_msg = array(
+    0 => 'File upload failed',
+    1 => 'File uploaded successfully'
+);
+
+if(array_key_exists($code, $code_msg)) {
+    $smarty->assign('message', $code_msg[$code]);
     if ($code == 0) {
-        $smarty->assign('message', 'File uploaded successfully');
-    } 
-    else {
-        $smarty->assign('message', 'File upload failed');
         $smarty->assign('data', $_SESSION["data"]);
     }
     $_SESSION['code'] = NULL;
+} 
+else {
+    $smarty->assign('message', '');
 }
 
+//page
 $page = isset($_GET['page']) ? $_GET['page'] : 'index';
 $pages = array(
     'reg' => 'register.tpl',
