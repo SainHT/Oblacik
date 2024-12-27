@@ -3,6 +3,8 @@
 
 <div>
     <button onclick="location.href='index.php?page=upld'">Upload</button>
+    <button onclick="location.href='index.php?page=log'">Login</button>
+    <button onclick="location.href='index.php?page=reg'">Register</button>
 </div>
 
 <PRE>
