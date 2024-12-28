@@ -89,5 +89,5 @@
     $sql = "INSERT INTO `$table` (`upload_ID`, `name`, `description`, `category_ID`, `source_address`) VALUES ('$upload_id', '$title', '$desc', '$categories', '$target_file')";
     $result = $db->query($sql);
 
-    //header('Location: index.php?page=upld');
+    header('Location: index.php?page=upld');
 ?>
