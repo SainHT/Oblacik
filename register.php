@@ -48,5 +48,3 @@ else {
     exit();
 }
 ?>
-
-//Stormblessed -> KnightsRadiant

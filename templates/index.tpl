@@ -2,17 +2,17 @@
 {include file="header.tpl" title=foo}
 
 <div>
-    <button onclick="location.href='index.php?page=upld'">Upload</button>
-    <button onclick="location.href='index.php?page=log'">Login</button>
-    <button onclick="location.href='index.php?page=reg'">Register</button>
-</div>
-<div>
     {if $logged} 
         {$user} is logged in
         <button onclick="location.href='logout.php'">Logout</button>
+        <button onclick="location.href='index.php?page=upld'">Upload</button>
     {/if}
     {if !$logged}
         Not logged in
+        <div>
+            <button onclick="location.href='index.php?page=log'">Login</button>
+            <button onclick="location.href='index.php?page=reg'">Register</button>
+        </div>
     {/if}
 </div>
 
