@@ -35,18 +35,19 @@ else {
 }
 
 //upload
-$code = isset($_SESSION['code']) ? $_SESSION['code'] : NULL;
+$code = isset($_SESSION['upld-code']) ? $_SESSION['upld-code'] : NULL;
 $code_msg = array(
-    0 => 'File upload failed',
-    1 => 'File uploaded successfully'
+    0 => 'File upload successfully',
+    1 => 'File uploaded failed',
+    2 => 'File already exists'
 );
 
 if(array_key_exists($code, $code_msg)) {
     $smarty->assign('message', $code_msg[$code]);
     if ($code == 0) {
-        $smarty->assign('data', $_SESSION["data"]);
+        $smarty->assign('data', $_SESSION["upld-data"]);
     }
-    $_SESSION['code'] = NULL;
+    $_SESSION['upld-code'] = NULL;
 } 
 else {
     $smarty->assign('message', '');
