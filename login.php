@@ -25,6 +25,7 @@ foreach ($result as $row) {
     if (password_verify($password, $row['password'])) {
         $_SESSION['user'] = $row['name'];
         $_SESSION['id'] = $row['user_ID'];
+        $_SESSION['admin'] = $row['privilege'];
         header('Location: index.php');
     } else {
         header('Location: index.php?page=log');
