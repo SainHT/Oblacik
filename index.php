@@ -16,6 +16,7 @@ if ($logged == NULL) {
 else {
     $smarty->assign('logged', true);
     $smarty->assign('user', $_SESSION['user']);
+    $smarty->assign('admin', $_SESSION['admin'] == 1 ? true : false);
 }
 
 //register
@@ -65,4 +66,14 @@ if (array_key_exists($page, $pages)) {
     $smarty->display($pages[$page]);
 } else {
     $smarty->display('index.tpl');
+}
+
+//admin panel
+$smarty->configLoad('db.conf', 'AdminPanel');
+$admin_conf = $smarty->getConfigVars('admin');
+$getter = $smarty->getConfigVars('getter');
+
+$admin = isset($_GET[$admin_conf]) ? $_GET[$admin_conf] : '';
+if ($admin == $getter && $_SESSION['admin'] == 1 && $logged != NULL) {
+    header('Location: admin.php');
 }

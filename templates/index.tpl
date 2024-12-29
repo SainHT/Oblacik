@@ -1,4 +1,4 @@
-{config_load file="test.conf" section="setup"}
+{config_load file="db.conf" section="AdminPanel"}
 {include file="header.tpl" title=foo}
 
 <div>
@@ -13,6 +13,10 @@
             <button onclick="location.href='index.php?page=log'">Login</button>
             <button onclick="location.href='index.php?page=reg'">Register</button>
         </div>
+    {/if}
+
+    {if $admin}
+        <button onclick="location.href='index.php?{#admin#}={#getter#}'">Admin panel</button>
     {/if}
 </div>
 
