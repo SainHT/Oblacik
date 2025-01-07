@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <title>Oblacik</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Honk&display=swap" rel="stylesheet">
+
+
+  <style>
+    body {
+      background-color: rgb(207, 83, 174);
+      background-image: url("https://pub-static.fotor.com/assets/bg/4f8b1707-5999-442b-ab60-4a982ec85be8.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      font-family:'Electrolize', serif;
+      color:rgb(243, 231, 253);
+
+    }
+    h1 {
+      font-family:'Honk', serif;
+      font-size: 60px; 
+      padding: 0px 0px 0px 40px
+      /* font-family:'Electrolize', serif; */
+    }
+
+    h2 {
+      font-family:'Honk', serif;
+      padding: 40px 40px 0px 40px
+    }
+
+    p {
+      margin:30px;
+    }
+
+    .header {
+      font-family:'Honk', serif;
+      overflow: hidden;
+      background-color: rgb(78, 25, 64);
+      padding: 20px 10px;
+    }
+
+    .header a {
+      text-decoration: none;
+      line-height: 25px;
+      display:flex;
+    }
+
+    .header a.logo {
+      float: left;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    .header a.signin {
+      position: absolute;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    .header a.profpic {
+      vertical-align: middle;
+      float: right;
+      margin: 0px 25px 0px 0px;
+      width: 50px;
+      height: 50px;
+    }
+
+    .avatar{
+      border-radius: 50%;
+    }
+
+    
+    .slideshow-container {
+      margin:10px;
+      width: 100%;
+      display: flex;
+    }
+
+    .slides {
+      overflow: auto;
+      scrollbar-color: rgb(186, 60, 159) rgb(250, 189, 68);
+      scrollbar-width: thick;
+      display: flex;
+    }
+
+    .slide {
+      box-sizing: border-box;
+      margin: 10px; 
+    }
+
+    .slide img {
+      border-radius: 5px;
+      height: 300px;
+      width: 200px;   
+      object-fit: cover;
+    }
+
+
+    #navbar {
+      position: sticky;
+      top: 0;
+      overflow: hidden;
+      background-color: #150619;
+    }
+
+    #navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 15px 50px 15px 50px;
+      text-decoration: none;
+    }
+
+    #navbar a:hover {
+      background-color:rgb(206, 149, 255);
+      color: rgb(255, 255, 255);
+    }
+    
+    #content {
+      padding: 16px;
+    }
+
+    #navbar input[type=text] {
+      margin: 15px 50px 15px 50px;
+      border: none;
+    }
+
+    /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+    @media screen and (max-width: 600px) {
+      #navbar a, #navbar input[type=text], #navbar a{
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 10px;
+        padding: 5px;
+      }
+      #navbar input[type=text] {
+        border: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="header">
+    <a href="#default" class="logo"><h1>OBLACIK</h1></a>
+    <a href="#signin" class="signin ">Sign in</a>
+    <a href="#profile" class="profpic"><img src="https://art.pixilart.com/sr2f2eafaa19c82.png" alt="Avatar" class="avatar"></a>
+  </div>
+
+
+  <div id="navbar">
+    <a href="#home">Home</a>
+    <a href="#books">Books</a>
+    <a href="#movies">Movies</a>
+    <input type="text" placeholder="Search..">
+  </div>
+
+    <p>This site will grow as we add more ...</p>
+  </div>
+
+
+  <h2>Books</h2>
+  <div class="slideshow-container">
+    <div class="slides">
+      <div class="slide"><img src="https://artaistry.com/cdn/shop/articles/book_cover_15.png?v=1703303461&width=480" alt="Movie 1"></div>
+      <div class="slide"><img src="https://diybookcovers.com/wp-content/uploads/2023/07/nonfiction8.jpg" alt="Movie 2"></div>
+      <div class="slide"><img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2022/01/Screenshot-2022-05-04-at-17.20.48-e1651678584559.png?auto=format&q=60&fit=max&w=930" alt="Movie 3"></div>
+      <div class="slide"><img src="https://www.theartworksinc.com/wp-content/uploads/2021/11/RS0022-1.jpg" alt="Movie 4"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 5"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 6"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 7"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 8"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 9"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 10"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 11"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 12"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 13"></div>
+    </div>
+  </div>
+
+
+  <h2>Movies</h2>
+  <div class="slideshow-container">
+    <div class="slides">
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 1"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 2"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 3"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 4"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 5"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 6"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 7"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 8"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 9"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 10"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 11"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 12"></div>
+      <div class="slide"><img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="Movie 13"></div>
+    </div>
+  </div>
+
+</body>
+</html>
