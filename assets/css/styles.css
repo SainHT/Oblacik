@@ -22,6 +22,11 @@ h2 {
   padding: 40px 40px 0px 40px
 }
 
+h3 {
+  font-family:'Electrolize', serif;
+  display: inline-block;
+}
+
 p {
   margin:30px;
 }
@@ -29,7 +34,7 @@ p {
 .header {
   font-family:'Honk', serif;
   overflow: hidden;
-  background-color: rgb(78, 25, 64);
+  background-color: rgb(67, 25, 78);
   padding: 20px 10px;
 }
 
@@ -122,8 +127,37 @@ p {
   border: none;
 }
 
+#video {
+  width:100%;
+  max-width:1000px;
+}
+
+#vidbox {
+  padding:20px;
+  display:flex;
+}
+
+#vidaccesories {
+  display:block;
+  margin-left:20px;
+}
+
+#download_butt {
+  margin:10px;
+  margin-top:100px;
+  text-align: center;
+  padding:10px;
+  font-family:'Honk', serif;
+  font-size: 25px;
+  background-color: rgb(250, 189, 68);
+  border-radius: 5px;
+  outline:auto;
+  outline-color: black;
+  outline-width: 5px;
+}
+
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   #navbar a, #navbar input[type=text], #navbar a{
     float: none;
     display: block;
@@ -132,7 +166,28 @@ p {
     margin: 10px;
     padding: 5px;
   }
+
   #navbar input[type=text] {
     border: 1px solid #ccc;
+  }
+
+  #video {
+    width:100%;
+  }
+
+  #vidbox {
+    padding:20px;
+    display:block;
+  }
+
+  #vidaccesories {
+    display:flex;
+    margin:0px;
+  }
+
+  #download_butt {
+    margin-left:auto;
+    margin-top:auto;
+    padding:10px;
   }
 }
