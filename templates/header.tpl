@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Honk&display=swap" rel="stylesheet">
 
-    <script src="~/zivcic.k/oblacik/assets/js/functions.js"></script>
+    <script src="/~zivcic.k/oblacik/assets/js/functions.js"></script>
 </head>
 <body>
 
@@ -37,15 +37,4 @@
         {/if}
     </div>
     <a href="#profile" class="profpic"><img src="https://art.pixilart.com/sr2f2eafaa19c82.png" alt="Avatar" class="avatar"></a>
-</div>
-
-
-<div id="navbar">
-    <a href="#home">Home</a>
-    <a href="#books">Books</a>
-    <a href="#movies">Movies</a>
-    <input type="text" placeholder="Search..">
-</div>
-
-<p>This site will grow as we add more ...</p>
 </div>

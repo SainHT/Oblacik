@@ -59,7 +59,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'index';
 $pages = array(
     'reg' => 'register.tpl',
     'log' => 'login.tpl',
-    'upld' => 'upload.tpl'
+    'upld' => 'upload.tpl',
+    'book' => 'book_filetype.tpl',
+    'movie' => 'movie_filetype.tpl',
 );
 
 if (array_key_exists($page, $pages)) {
