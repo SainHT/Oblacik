@@ -76,7 +76,7 @@ p {
 
 .slides {
   overflow: auto;
-  scrollbar-color: rgb(186, 60, 159) rgb(250, 189, 68);
+  scrollbar-color: rgb(250, 189, 68) rgb(186, 60, 159);
   scrollbar-width: thick;
   display: flex;
 }

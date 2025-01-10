@@ -2,9 +2,10 @@
 {include file="header.tpl" title=foo}
 
 <div id="navbar">
-    <a href="#home">Home</a>
-    <a href="#books">Books</a>
     <a href="#movies">Movies</a>
+    <a href="#books">Books</a>
+    <a href="#photos">Photos</a>
+    <a href="#other">Other</a>
     <input type="text" placeholder="Search..">
 </div>
 
