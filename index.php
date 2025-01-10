@@ -1,6 +1,6 @@
 <?php
-require 'libs/Smarty.class.php';  # framework
-require 'dbconnect.php';  # db_connection
+require 'libs/Smarty.class.php';  // framework
+require 'dbconnect.php';  // db_connection
 session_start();
 
 $smarty = new \Smarty\Smarty;
@@ -68,6 +68,34 @@ $pages = array(
 if (array_key_exists($page, $pages)) {
     $smarty->display($pages[$page]);
 } else {
+    //books
+    $stmt = $db->prepare('SELECT * FROM `oblacik_books` ORDER BY `book_ID` DESC LIMIT 13');
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $books = $result->fetch_all(MYSQLI_ASSOC);
+    $smarty->assign('books', $books);
+
+    //movies
+    $stmt = $db->prepare('SELECT * FROM `oblacik_movies` ORDER BY `movie_ID` DESC LIMIT 13');
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $movies = $result->fetch_all(MYSQLI_ASSOC);
+    $smarty->assign('movies', $movies);
+
+    //photos
+    $stmt = $db->prepare('SELECT * FROM `oblacik_photos` ORDER BY `photo_ID` DESC LIMIT 13');
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $photos = $result->fetch_all(MYSQLI_ASSOC);
+    $smarty->assign('photos', $photos);
+
+    //other
+    $stmt = $db->prepare('SELECT * FROM `oblacik_others` ORDER BY `other_ID` DESC LIMIT 13');
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $other = $result->fetch_all(MYSQLI_ASSOC);
+    $smarty->assign('other', $other);
+
     $smarty->display('index.tpl');
 }
 
