@@ -7,7 +7,7 @@ $smarty = new \Smarty\Smarty;
 
 // Check if user is logged in
 if (!isset($_SESSION['id'])) {
-    header('Location: login.php');
+    $_SESSION['upld-code'] = 3;
     exit();
 }
 
@@ -50,9 +50,6 @@ for ($i = 0; $i < $chunks; $i++) {
 }
 fclose($fp);
 
-
-
-//! Not working
 $fileType = mime_content_type($target_file);
 
 

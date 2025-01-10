@@ -1,4 +1,4 @@
-function uploadFile() {
+async function uploadFile() {
     //things to upload
     const file = document.getElementById('file').files[0];
     const title = document.getElementById('title').value;
@@ -54,5 +54,6 @@ function uploadFile() {
         };
 
         xhr.send(formData);
+        await new Promise(resolve => xhr.onloadend = resolve);
     }
 }
