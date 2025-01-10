@@ -40,7 +40,8 @@ $code = isset($_SESSION['upld-code']) ? $_SESSION['upld-code'] : NULL;
 $code_msg = array(
     0 => 'File upload successfully',
     1 => 'File uploaded failed',
-    2 => 'File already exists'
+    2 => 'File already exists',
+    3 => 'User not logged in',
 );
 
 if(array_key_exists($code, $code_msg)) {
