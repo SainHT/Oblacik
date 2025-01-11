@@ -61,40 +61,31 @@ $pages = array(
     'reg' => 'register.tpl',
     'log' => 'login.tpl',
     'upld' => 'upload.tpl',
-    'book' => 'book_filetype.tpl',
-    'movie' => 'movie_filetype.tpl',
+    'books' => 'book_filetype.tpl',
+    'photos' => 'book_filetype.tpl',
+    'others' => 'book_filetype.tpl',
+    'movies' => 'movie_filetype.tpl',
 );
 
 if (array_key_exists($page, $pages)) {
     $smarty->display($pages[$page]);
 } else {
-    //books
-    $stmt = $db->prepare('SELECT * FROM `oblacik_books` ORDER BY `book_ID` DESC LIMIT 13');
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $books = $result->fetch_all(MYSQLI_ASSOC);
-    $smarty->assign('books', $books);
+    $file_categories = array(
+        'books' => 'books',
+        'movies' => 'movies',
+        'photos' => 'photos',
+        'others' => 'others',
+    );
 
-    //movies
-    $stmt = $db->prepare('SELECT * FROM `oblacik_movies` ORDER BY `movie_ID` DESC LIMIT 13');
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $movies = $result->fetch_all(MYSQLI_ASSOC);
-    $smarty->assign('movies', $movies);
+    foreach ($file_categories as $category) {
+        $stmt = $db->prepare('SELECT * FROM `oblacik_' . $category . '` ORDER BY `ID` DESC LIMIT 13');
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $files = $result->fetch_all(MYSQLI_ASSOC);
+        $file_categories[$category] = $files;
+    }
 
-    //photos
-    $stmt = $db->prepare('SELECT * FROM `oblacik_photos` ORDER BY `photo_ID` DESC LIMIT 13');
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $photos = $result->fetch_all(MYSQLI_ASSOC);
-    $smarty->assign('photos', $photos);
-
-    //other
-    $stmt = $db->prepare('SELECT * FROM `oblacik_others` ORDER BY `other_ID` DESC LIMIT 13');
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $other = $result->fetch_all(MYSQLI_ASSOC);
-    $smarty->assign('other', $other);
+    $smarty->assign('categories', $file_categories);
 
     $smarty->display('index.tpl');
 }
