@@ -97,5 +97,6 @@ $getter = $smarty->getConfigVars('getter');
 
 $admin = isset($_GET[$admin_conf]) ? $_GET[$admin_conf] : '';
 if ($admin == $getter && $_SESSION['admin'] == 1 && $logged != NULL) {
+    
     header('Location: admin.php');
 }
