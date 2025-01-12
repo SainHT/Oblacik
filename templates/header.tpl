@@ -31,10 +31,6 @@
                 <button onclick="location.href='index.php?page=reg'">Register</button>
             </div>
         {/if}
-
-        {if $admin}
-            <button onclick="location.href='index.php?{#admin#}={#getter#}'">Admin panel</button>
-        {/if}
     </div>
     <a href="#profile" class="profpic"><img src="https://art.pixilart.com/sr2f2eafaa19c82.png" alt="Avatar" class="avatar"></a>
 </div>
