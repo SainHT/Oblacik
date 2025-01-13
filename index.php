@@ -42,6 +42,7 @@ $code_msg = array(
     1 => 'File uploaded failed',
     2 => 'File already exists',
     3 => 'User not logged in',
+    4 => 'Thumbnail is not an image',
 );
 
 if(array_key_exists($code, $code_msg)) {
