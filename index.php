@@ -86,6 +86,8 @@ if (array_key_exists($page, $pages)) {
         $file_categories[$category] = $files;
     }
 
+
+    $smarty->assign('default_img', 'https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg');
     $smarty->assign('categories', $file_categories);
 
     $smarty->display('index.tpl');
