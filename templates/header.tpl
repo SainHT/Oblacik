@@ -1,3 +1,5 @@
+{config_load file="db.conf" section="Database"}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +8,14 @@
     <title>Oblacik</title>
 
     <!-- Change the name if unsing on a different account -->
-    <link rel="stylesheet" href="/~zivcic.k/oblacik/assets/css/w3.css">
-    <link rel="stylesheet" href="/~zivcic.k/oblacik/assets/css/design.css">
-    <link rel="stylesheet" href="/~zivcic.k/oblacik/assets/css/styles.css">
+    <link rel="stylesheet" href="/~{#user#}/oblacik/assets/css/w3.css">
+    <link rel="stylesheet" href="/~{#user#}/oblacik/assets/css/design.css">
+    <link rel="stylesheet" href="/~{#user#}/oblacik/assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Honk&display=swap" rel="stylesheet">
 
-    <script src="/~zivcic.k/oblacik/assets/js/functions.js"></script>
+    <script src="/~{#user#}/oblacik/assets/js/functions.js"></script>
 </head>
 <body>
 

@@ -1,4 +1,5 @@
 {config_load file="db.conf" section="AdminPanel"}
+{config_load file="db.conf" section="Database"}
 {include file="header.tpl" title=foo}
 
 <div id="navbar">
@@ -23,7 +24,7 @@
       {foreach $items as $item}
         <div class="slide"><a href="index.php?page={$category}&id={$item.ID}">
             {if $item.thumbnail}
-              <img src="/~zivcic.k/oblacik/assets/img/thumbnails/{$item.thumbnail}" alt="{$item.name}">
+              <img src="/~{#user#}/oblacik/assets/img/thumbnails/{$item.thumbnail}" alt="{$item.name}">
             {else}
               <img src="{$default_img}" alt="{$item.name}">
             {/if}
