@@ -42,6 +42,7 @@ $code_msg = array(
     1 => 'File uploaded failed',
     2 => 'File already exists',
     3 => 'User not logged in',
+    4 => 'Thumbnail is not an image',
 );
 
 if(array_key_exists($code, $code_msg)) {
@@ -85,6 +86,8 @@ if (array_key_exists($page, $pages)) {
         $file_categories[$category] = $files;
     }
 
+
+    $smarty->assign('default_img', 'https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg');
     $smarty->assign('categories', $file_categories);
 
     $smarty->display('index.tpl');
