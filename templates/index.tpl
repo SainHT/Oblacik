@@ -23,7 +23,7 @@
       {foreach $items as $item}
         <div class="slide"><a href="index.php?page={$category}&id={$item.ID}">
             {if $item.thumbnail}
-              <img src="/assets/img/thumbnails/{$item.thumbnail}" alt="{$item.name}">
+              <img src="/~zivcic.k/oblacik/assets/img/thumbnails/{$item.thumbnail}" alt="{$item.name}">
             {else}
               <img src="{$default_img}" alt="{$item.name}">
             {/if}

@@ -70,6 +70,12 @@ $stmt->execute();
 $upload_id = $stmt->insert_id;
 $stmt->close();
 
+// Rename the thumbnail file to include the upload ID
+$thumbnail_extension = pathinfo($thumbnail_file, PATHINFO_EXTENSION);
+$new_thumbnail_file = "assets/img/thumbnails/" . $upload_id . '-thumbnail.' . $thumbnail_extension;
+rename($thumbnail_file, $new_thumbnail_file);
+$thumbnailName = $new_thumbnail_file;
+
 // Insert the file into the database
 $stmt = $db->prepare("INSERT INTO `$table` (`upload_ID`, `name`, `description`, `source_address`, `thumbnail`) VALUES (?, ?, ?, ?, ?)");
 $stmt->bind_param("issss", $upload_id, $title, $description, $target_file, $thumbnailName);

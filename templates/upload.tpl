@@ -10,7 +10,7 @@
             <input type="file" name="file" id="file" required>
 
             <label for="thumbnail">Choose a thumbnail image</label>
-            <input type="file" name="thumbnail" id="thumbnail" required>
+            <input type="file" name="thumbnail" id="thumbnail">
             
             <label for="title">Title</label>
             <input type="text" name="title" id="title" placeholder="Title" value="{$data['title']|default:''}" required>

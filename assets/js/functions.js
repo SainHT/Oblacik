@@ -19,8 +19,10 @@ async function uploadManager() {
         alert('Thumbnail must be an image');
         return;
     }
-    //TODO: scale the image to 1000x1000
-    await uploadThumbnail(thumbnail, 'assets/img/thumbnails/');
+    
+    //TODO: scale the image to 400x600
+    const scaledThumbnail = await scaleImage(thumbnail, 600);
+    await uploadThumbnail(scaledThumbnail, 'assets/img/thumbnails/');
 
 
     //opload data for table
@@ -86,4 +88,28 @@ async function uploadFile(file, dir) {
         xhr.send(formData);
     }
     await Promise.all(promises);
+}
+
+async function scaleImage(file, targetHeight) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = URL.createObjectURL(file);
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const height = targetHeight;
+            const width = (img.width / img.height) * height;
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            canvas.toBlob((blob) => {
+                resolve(blob);
+            }, file.type);
+        };
+        img.onerror = (err) => {
+            reject(err);
+        };
+    });
 }
