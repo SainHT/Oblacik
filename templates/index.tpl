@@ -1,7 +1,19 @@
 {config_load file="db.conf" section="AdminPanel"}
 {config_load file="db.conf" section="Database"}
 {include file="header.tpl" title=foo}
-{include file="navbar.tpl" title=foo}
+
+<div id="navbar">
+  <a href="index.php">Home</a>
+  {foreach $categories as $key => $value}
+    <a href="#{$key}">{$key|capitalize}</a>
+  {/foreach}
+
+  <input type="text" placeholder="Search..">
+
+  {if $admin}
+    <a href="index.php?{#admin#}={#getter#}" style="float: right;">Admin Panel</a>
+  {/if}
+</div>
 
 <p>This site will grow as we add more ...</p>
 </div>
