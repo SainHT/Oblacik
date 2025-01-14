@@ -1,14 +1,8 @@
 {config_load file="test.conf" section="setup"}
 {include file="header.tpl"}
+{include file="navbar.tpl" title=foo}
 
 <body>
-  <div id="navbar">
-      <a href="#home">Home</a>
-      <a href="#books">Books</a>
-      <a href="#movies">Movies</a>
-      <input type="text" placeholder="Search..">
-  </div>
-
   <div id="vidbox">
 
     <video id="video" controls>

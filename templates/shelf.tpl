@@ -1,13 +1,6 @@
 {config_load file="db.conf" section="AdminPanel"}
 {include file="header.tpl" title=foo}
-
-<div id="navbar">
-    <a href="index.php">Home</a>
-    {foreach from=$categories key=key item=value}
-      <a href="#{$key}">{$key|capitalize}</a>
-    {/foreach}
-    <input type="text" placeholder="Search..">
-</div>
+{include file="navbar.tpl" title=foo}
 
 <div class="shelf-container">
     <div class="slides">
