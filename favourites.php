@@ -6,12 +6,13 @@ session_start();
 $smarty = new \Smarty\Smarty;
 
 // Check if user is logged in
+//TODO: add a visual indicator to this msg
 if (!isset($_SESSION['id'])) {
     $_SESSION['upld-code'] = 3;
     exit();
 }
 
-$upload_ID = $_GET['id'];  // might need to change this to POST
+$upload_ID = intval($_POST['id']);
 $user_ID = $_SESSION['id'];
 
 // Check if the user has already favourited the upload
@@ -21,6 +22,9 @@ $stmt->execute();
 $result = $stmt->get_result();
 $favourites = $result->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
+
+
+echo json_encode(count($favourites));
 
 // if the user has already favourited the upload, remove it from favourites otherwise add it
 if (count($favourites) > 0) {
@@ -33,5 +37,6 @@ $stmt->bind_param("ii", $upload_ID, $user_ID);
 $stmt->execute();
 $stmt->close();
 
-header('Location: index.php'); //change this to redirect to the same page
+
+exit();
 ?>
