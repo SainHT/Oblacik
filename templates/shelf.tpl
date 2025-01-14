@@ -3,22 +3,13 @@
 
 <div id="navbar">
     <a href="index.php">Home</a>
-    {foreach $categories as $key => $value}
+    {foreach from=$categories key=key item=value}
       <a href="#{$key}">{$key|capitalize}</a>
     {/foreach}
     <input type="text" placeholder="Search..">
-
-    {if $admin}
-      <a href="index.php?{#admin#}={#getter#}" style="float: right;">Admin Panel</a>
-    {/if}
 </div>
 
-<p>This site will grow as we add more ...</p>
-</div>
-
-{foreach $categories as $category => $items}
-  <h2>{$category|capitalize}</h2>
-  <div class="slideshow-container">
+<div class="shelf-container">
     <div class="slides">
       {foreach $items as $item}
         <div class="slide"><a href="index.php?page={$category}&id={$item.ID}">
@@ -26,7 +17,6 @@
         </a></div>  {* src="{$item.cover}" - add when thumbnails are done*}
       {/foreach}
     </div>
-  </div>
-{/foreach}
 
+    
 {include file="footer.tpl"}

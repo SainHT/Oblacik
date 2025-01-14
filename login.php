@@ -24,7 +24,7 @@ if ($result->num_rows == 0){
 foreach ($result as $row) {
     if (password_verify($password, $row['password'])) {
         $_SESSION['user'] = $row['name'];
-        $_SESSION['id'] = $row['user_ID'];
+        $_SESSION['id'] = $row['ID'];
         $_SESSION['admin'] = $row['privilege'];
         header('Location: index.php');
     } else {

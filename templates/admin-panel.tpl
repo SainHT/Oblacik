@@ -1,18 +1,44 @@
 {include file="header.tpl"}
 
+<div id="navbar">
+    <a href="index.php">Home</a>
+    <a href="admin.php">Users</a>
+    {foreach from=$categories key=key item=value}
+        <a href="admin.php?page={$key}">{$key|capitalize}</a>
+    {/foreach}
+    <input type="text" placeholder="Search..">
+
+</div>
+
 <div class="login" style="width: 1500px;">
     <div class="form" style="max-width: 1500px;">
-        {foreach from=$users item=user}
-            <form method="POST" action="userUpdate.php">
-                <input type="hidden" name="id" value="{$user['user_ID']}">
-                <label for="username_{$user['user_ID']}">Username:</label>
-                <input type="text" id="username_{$user['user_ID']}" name="username" value="{$user['name']}" style="width: auto;">
-                <label for="password_{$user['user_ID']}">Password:</label>
-                <input type="password" id="password_{$user['user_ID']}" name="password" style="width: auto;">
-                <label for="email_{$user['user_ID']}">Email:</label>
-                <input type="text" id="email_{$user['user_ID']}" name="email" value="{$user['email']}" style="width: auto;">
-                <label for="privilege_{$user['user_ID']}">Privilege:</label>
-                <input type="checkbox" id="privilege_{$user['user_ID']}" name="privilege" {if $user['privilege']}checked{/if} style="width: auto;">
+        {foreach $users as $user}
+            <form method="POST" action="itemUpdate.php">
+                {foreach $user as $key => $item}
+                    {*make IDs hidden*}
+                    {if $key == 'ID' || $key == 'upload_ID'}
+                        <input type="hidden" name="{$key}" value="{$item}">
+                        {continue}
+                    {/if}
+
+                    {*skip categories - not implemented*}
+                    {if $key == 'category_ID'}
+                        {continue}
+                    {/if}
+
+                    <label for="{$key}_{$user.ID}">{$key|capitalize}:</label>
+
+                    {if $key == 'password'}
+                        <input type="text" id="{$key}_{$user.ID}" name="{$key}" style="width: auto;">
+                        {continue}
+                    {/if}
+                    {if $key == 'privilege'}
+                        <input type="checkbox" id="{$key}_{$user.ID}" name="{$key}" {if $item}checked{/if} style="width: auto;">
+                        {continue}
+                    {/if}
+                    
+                    <input type="text" id="{$key}_{$user.ID}" name="{$key}" value="{$item}" style="width: auto;">
+                {/foreach}
                 <input type="submit" value="Update" style="width: auto;">
             </form>
         {/foreach}

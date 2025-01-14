@@ -10,7 +10,7 @@ async function uploadFile() {
         return;
     }
 
-    const chunkSize = 900 * 900 //less than 1MB
+    const chunkSize = 900 * 900 //less than 1MB; nemenit lebo vsetko zblbne; dovod Lomen
     const chunks = Math.ceil(file.size / chunkSize);
     console.log(Math.ceil(file.size / chunkSize));
     console.log(`Total chunks: ${chunks}`);
