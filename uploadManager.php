@@ -17,6 +17,7 @@ $title = $_POST['title'];
 $description = $_POST['description'];
 
 //bind the chunks together of the file
+$chunks = $_POST['file_chunks'];
 $target_file = "files/" . basename($fileName);
 $fp = fopen($target_file, 'w');
 for ($i = 0; $i < $chunks; $i++) {
@@ -28,13 +29,14 @@ for ($i = 0; $i < $chunks; $i++) {
 fclose($fp);
 
 //bind the chunks together of the thumbnail
-$thumbnailType = mime_content_type($thumbnailName);
-if (!preg_match('/^image\//', $thumbnailType)) {
-    $_SESSION['upld-code'] = 4;
-    exit();
-}
-
 $thumbnail_file = "assets/img/thumbnails/" . basename($thumbnailName);
+// $thumbnailType = mime_content_type($thumbnail_file);
+// if (!preg_match('/^image\//', $thumbnailType)) {
+//     $_SESSION['upld-code'] = 4;
+//     exit();
+// }
+
+$chunks = $_POST['thumbnail_chunks'];
 $fp = fopen($thumbnail_file, 'w');
 for ($i = 0; $i < $chunks; $i++) {
     $chunkFile = $thumbnail_file . '.part' . $i;
@@ -46,7 +48,7 @@ fclose($fp);
 
 
 //determine the table based on the file type
-$fileType = mime_content_type($fileName);
+$fileType = mime_content_type($target_file);
 switch ($fileType) {
     case (preg_match('/^image\//', $fileType) ? true : false):
         $table = 'oblacik_photos';
@@ -75,6 +77,7 @@ $thumbnail_extension = pathinfo($thumbnail_file, PATHINFO_EXTENSION);
 $new_thumbnail_file = "assets/img/thumbnails/" . $upload_id . '-thumbnail.' . $thumbnail_extension;
 rename($thumbnail_file, $new_thumbnail_file);
 $thumbnailName = $new_thumbnail_file;
+$thumbnailName = basename($new_thumbnail_file);
 
 // Insert the file into the database
 $stmt = $db->prepare("INSERT INTO `$table` (`upload_ID`, `name`, `description`, `source_address`, `thumbnail`) VALUES (?, ?, ?, ?, ?)");

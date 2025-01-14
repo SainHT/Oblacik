@@ -6,7 +6,7 @@ async function uploadManager() {
     const description = document.getElementById('description').value;
 
     //check if all of them are filled
-    if (!file || !thumbnail || !title || !description) {
+    if (!file || !title || !description) {
         alert('Please fill all fields');
         return;
     }
@@ -22,7 +22,7 @@ async function uploadManager() {
     
     //TODO: scale the image to 400x600
     const scaledThumbnail = await scaleImage(thumbnail, 600);
-    await uploadThumbnail(scaledThumbnail, 'assets/img/thumbnails/');
+    await uploadFile(scaledThumbnail, 'assets/img/thumbnails/');
 
 
     //opload data for table
@@ -31,6 +31,8 @@ async function uploadManager() {
     formData.append('thumbnail', thumbnail.name);
     formData.append('title', title);
     formData.append('description', description);
+    formData.append('file_chunks', Math.ceil(file.size / 900 / 900));
+    formData.append('thumbnail_chunks', Math.ceil(scaledThumbnail.size / 900 / 900));
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'uploadManager.php', true); //change the php file
@@ -105,7 +107,9 @@ async function scaleImage(file, targetHeight) {
             ctx.drawImage(img, 0, 0, width, height);
 
             canvas.toBlob((blob) => {
-                resolve(blob);
+                // Create a new file with the same name as the original
+                const scaledFile = new File([blob], file.name, { type: file.type });
+                resolve(scaledFile);
             }, file.type);
         };
         img.onerror = (err) => {
