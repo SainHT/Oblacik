@@ -1,4 +1,5 @@
 {config_load file="db.conf" section="AdminPanel"}
+{config_load file="db.conf" section="Database"}
 {include file="header.tpl" title=foo}
 {include file="navbar.tpl" title=foo}
 
@@ -11,7 +12,11 @@
     <div class="slides">
       {foreach $items as $item}
         <div class="slide"><a href="index.php?page={$category}&id={$item.ID}">
-          <img src="https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg" alt="{$item.name}">
+            {if $item.thumbnail}
+              <img src="/~{#user#}/oblacik/assets/img/thumbnails/{$item.thumbnail}" alt="{$item.name}">
+            {else}
+              <img src="{$default_img}" alt="{$item.name}">
+            {/if}
         </a></div>  {* src="{$item.cover}" - add when thumbnails are done*}
       {/foreach}
     </div>

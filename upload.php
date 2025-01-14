@@ -11,9 +11,7 @@ if (!isset($_SESSION['id'])) {
     exit();
 }
 
-$ADD_TO_DB = false;
-
-$target_dir = "files/";
+$target_dir = $_POST['dir'];
 $fileName = $_POST['filename'];
 $chunks = $_POST['chunks'];
 $chunk = $_POST['chunkIndex'];
@@ -35,70 +33,6 @@ if (!move_uploaded_file($_FILES['file']['tmp_name'], $chunkFile)) {
     exit();
 }
 
-// Check if all chunks are uploaded
-if ($chunk != $chunks - 1) {
-    echo json_encode(array('status' => "$chunk of $chunks"));
-    exit();
-}
 
-$fp = fopen($target_file, 'w');
-for ($i = 0; $i < $chunks; $i++) {
-    $chunkFile = $target_file . '.part' . $i;
-    $chunk = file_get_contents($chunkFile);
-    fwrite($fp, $chunk);
-    unlink($chunkFile);
-}
-fclose($fp);
-
-$fileType = mime_content_type($target_file);
-
-
-// Determine the table based on the file type
-switch ($fileType) {
-    case 'image/jpeg':
-    case 'image/jpg':
-    case 'image/png':
-    case 'image/gif':
-    case 'image/bmp':
-    case 'image/webp':
-        $table = 'oblacik_photos';
-        break;
-    case 'application/pdf':
-    case 'application/msword':
-        $table = 'oblacik_books';
-        break;
-    case 'video/mp4':
-    case 'video/avi':
-    case 'video/mpeg':
-    case 'video/x-msvideo':
-        $table = 'oblacik_movies';
-        break;
-    default:
-        $table = 'oblacik_others';
-        break;
-}
-
-$title = $_POST['title'];
-$desc = $_POST['description'];
-
-$response = array(
-    'title' => $title,
-    'description' => $desc,
-    'fileType' => $fileType
-);
-
-echo json_encode($response);
-
-// Insert into the uploads table
-$stmt = $db->prepare("INSERT INTO `oblacik_uploads` (`user_ID`) VALUES (?)");
-$stmt->bind_param("i", $_SESSION['id']);
-$stmt->execute();
-$upload_id = $stmt->insert_id;
-$stmt->close();
-
-// Insert into the specific table based on file type
-$stmt = $db->prepare("INSERT INTO `$table` (`upload_ID`, `name`, `description`, `source_address`) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("isss", $upload_id, $title, $desc, $target_file);
-$stmt->execute();
-$stmt->close();
+echo json_encode(array('status' => "$chunk of $chunks"));
 ?>
