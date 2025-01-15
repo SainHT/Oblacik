@@ -7,7 +7,7 @@ $smarty = new \Smarty\Smarty;
 
 // Check if user is logged in
 if (!isset($_SESSION['id'])) {
-    $_SESSION['upld-code'] = 3;
+    echo json_encode(array('msg' => 'User not logged in'));
     exit();
 }
 
@@ -30,11 +30,6 @@ fclose($fp);
 
 //bind the chunks together of the thumbnail
 $thumbnail_file = "assets/img/thumbnails/" . basename($thumbnailName);
-// $thumbnailType = mime_content_type($thumbnail_file);
-// if (!preg_match('/^image\//', $thumbnailType)) {
-//     $_SESSION['upld-code'] = 4;
-//     exit();
-// }
 
 $chunks = $_POST['thumbnail_chunks'];
 $fp = fopen($thumbnail_file, 'w');
@@ -45,6 +40,14 @@ for ($i = 0; $i < $chunks; $i++) {
     unlink($chunkFile);
 }
 fclose($fp);
+
+//thumbnail has to be an image
+if (!getimagesize($thumbnail_file)) {
+    $_SESSION['error_code'] = 'Thumbnail is not an image';
+    echo json_encode(array('msg' => 'Thumbnail is not an image'));
+    unlink($thumbnail_file);
+    exit();
+}
 
 
 //determine the table based on the file type
@@ -85,5 +88,5 @@ $stmt->bind_param("issss", $upload_id, $title, $description, $target_file, $thum
 $stmt->execute();
 $stmt->close();
 
-$_SESSION['upld-code'] = 0;
+$_SESSION['error_code'] = 'File uploaded successfully';
 ?>

@@ -30,7 +30,9 @@
               <img src="{$default_img}" alt="{$item.name}">
             {/if}
         </a>
-            <button class="fav" type="button" onclick="favourite({$item.upload_ID})">❤</button>
+            {if $logged}
+              <button class="fav" type="button" onclick="favourite({$item.upload_ID})">❤</button>
+            {/if}
         </div>
       {/foreach}
     </div>

@@ -14,8 +14,11 @@ if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
     $search = "name";
 }
 
-$sql = "SELECT * FROM `oblacik_users` WHERE `$search` = '$username'";
-$result = $db->query($sql);
+$stmt = $db->prepare("SELECT * FROM `oblacik_users` WHERE `$search` = ?");
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$result = $result->fetch_all(MYSQLI_ASSOC);
 
 if ($result->num_rows == 0){
     header('Location: index.php?page=log');
@@ -26,10 +29,12 @@ foreach ($result as $row) {
         $_SESSION['user'] = $row['name'];
         $_SESSION['id'] = $row['ID'];
         $_SESSION['admin'] = $row['privilege'];
+        $_SESSION['error_code'] = "Login successful";
         header('Location: index.php');
-    } else {
-        header('Location: index.php?page=log');
+        exit();
     }
 }
 
+$_SESSION['error_code'] = "Invalid username or password";
+header('Location: index.php?page=log');
 ?>

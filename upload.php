@@ -7,7 +7,7 @@ $smarty = new \Smarty\Smarty;
 
 // Check if user is logged in
 if (!isset($_SESSION['id'])) {
-    $_SESSION['upld-code'] = 3;
+    echo json_encode(array('msg' => 'User not logged in'));
     exit();
 }
 
@@ -19,12 +19,12 @@ $chunk = $_POST['chunkIndex'];
 $target_file = $target_dir . basename($fileName);
 
 // Check if file already exists
-// if (file_exists($target_file)) {
-//     $_SESSION['upld-code'] = 2;
-//     $_SESSION['upld-data'] = $_POST;
-//     header('Location: index.php?page=upld');
-//     exit();
-// }
+//TODO: test this
+if (file_exists($target_file)) {
+    echo json_encode(array('status' => 'File already exists'));
+    $_SESSION['error_code'] = 'File already exists';
+    exit();
+}
 
 // Save the chunk
 $chunkFile = $target_file . '.part' . $chunk;
@@ -35,4 +35,5 @@ if (!move_uploaded_file($_FILES['file']['tmp_name'], $chunkFile)) {
 
 
 echo json_encode(array('status' => "$chunk of $chunks"));
+exit();
 ?>

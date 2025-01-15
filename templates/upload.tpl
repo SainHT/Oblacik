@@ -3,7 +3,6 @@
 
 <div class="login">
     <div class="form">
-        {$message|default:''}
         <h1>Upload here</h1>
         <form id="uploadForm" method="post" enctype="multipart/form-data" >
             <label for="file">Choose a file</label>
