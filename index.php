@@ -37,9 +37,15 @@ $pages = array(
     'photos' => 'book_filetype.tpl',
     'others' => 'book_filetype.tpl',
     'movies' => 'movie_filetype.tpl',
+    'shelf' => 'shelf.tpl',
 );
 
 if (array_key_exists($page, $pages)) {
+    if($page == 'shelf'){
+        $type = isset($_GET['type']) ? $_GET['type'] : '';
+        $smarty->assign('type', $type);
+    }
+    
     $smarty->display($pages[$page]);
 } else {
     $file_categories = array(
