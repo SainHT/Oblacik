@@ -131,8 +131,8 @@ async function favourite(upld_id) {
     await new Promise(resolve => xhr.onloadend = resolve);
 }
 
-function myFunction() {
-    var x = document.getElementById("myLinks");
+function toggleBurger() {
+    var x = document.getElementById("navbarmobile");
     if (x.style.display === "block") {
         x.style.display = "none";
     } else {

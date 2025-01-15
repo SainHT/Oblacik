@@ -1,6 +1,6 @@
-{config_load file="db.conf" section="AdminPanel"}
 {config_load file="db.conf" section="Database"}
 {include file="header.tpl" title=foo}
+{include file="navbar.tpl"}
 
 <div id="navbar">
   <a href="index.php">Home</a>

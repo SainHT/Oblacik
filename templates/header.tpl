@@ -20,20 +20,17 @@
 
 <div class="header">
     <a href="index.php" class="logo"><h1>OBLACIK</h1></a>
-    <div>
+    <div id="profbuttons">
         {if $logged} 
-            {$user} is logged in
-            <button onclick="location.href='logout.php'">Logout</button>
-            <button onclick="location.href='index.php?page=upld'">Upload</button>
-        {/if}
-        {if !$logged}
-            <div>
-                <button onclick="location.href='index.php?page=log'">Login</button>
-                <button onclick="location.href='index.php?page=reg'">Register</button>
+            <div id="eachprofbutton">
+                <button onclick="location.href='logout.php'">Logout</button>
+                <button onclick="location.href='index.php?page=upld'">Upload</button>
             </div>
+            {$user} <!--is logged in-->
+        {else}
+            <a href='index.php?page=log' class="profpic"><img src="https://art.pixilart.com/sr2f2eafaa19c82.png" alt="Avatar" class="avatar"></a>
         {/if}
     </div>
-    <a href="#profile" class="profpic"><img src="https://art.pixilart.com/sr2f2eafaa19c82.png" alt="Avatar" class="avatar"></a>
 </div>
 {if $error_msg}
     <span class="pop_wrapper" id="error-popup">
