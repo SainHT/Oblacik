@@ -1,7 +1,6 @@
-{config_load file="db.conf" section="AdminPanel"}
 {config_load file="db.conf" section="Database"}
 {include file="header.tpl" title=foo}
-{include file="navbar.tpl" title=foo}
+{include file="navbar.tpl"}
 
 <p>This site will grow as we add more ...</p>
 </div>

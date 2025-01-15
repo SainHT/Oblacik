@@ -13,7 +13,7 @@ body {
 h1 {
   font-family:'Honk', serif;
   font-size: 60px; 
-  padding: 0px 0px 0px 40px
+  padding: 10px
   /* font-family:'Electrolize', serif; */
 }
 
@@ -32,10 +32,13 @@ p {
 }
 
 .header {
-  font-family:'Honk', serif;
+  font-family: 'Honk', serif;
   overflow: hidden;
   background-color: rgb(67, 25, 78);
-  padding: 20px 10px;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header a {
@@ -62,6 +65,15 @@ p {
   margin: 0px 25px 0px 0px;
   width: 50px;
   height: 50px;
+}
+
+#profbuttons {
+  display: flex;
+  align-items: center;
+}
+
+#eachprofbutton{
+  margin:10px
 }
 
 .avatar{
@@ -156,8 +168,43 @@ p {
   outline-width: 5px;
 }
 
+#navbarmobile {
+  display: none;
+}
+
+#burger {
+  display: none;
+}
+
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 1000px) {
+  h1{
+    font-size: 40px;
+  }
+
+  .header {
+    font-family: 'Honk', serif;
+    overflow: hidden;
+    background-color: rgb(67, 25, 78);
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header a.logo {
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .header a {
+    text-decoration: none;
+    line-height: 25px;
+    display: flex;
+  }
+
   #navbar a, #navbar input[type=text], #navbar a{
     float: none;
     display: block;
@@ -169,6 +216,10 @@ p {
 
   #navbar input[type=text] {
     border: 1px solid #ccc;
+  }
+
+  #navbarcomp{
+    display: none;
   }
 
   #video {
@@ -190,45 +241,24 @@ p {
     margin-top:auto;
     padding:10px;
   }
-}
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-  position: relative;
-}
+  /* Style the hamburger menu */
+  #burger{
+    display: block;
+    margin-left: 10px;
+    width: auto;
+    height: auto;
+  }
 
-/* Hide the links inside the navigation menu (except for logo/home) */
-.topnav #myLinks {
-  display: none;
-}
+  #burger a{
+    background: rgb(206, 149, 255);
+    width: 30px;
+    height: 32px;
+  }
 
-/* Style navigation menu links */
-.topnav a {
-  color: white;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  display: block;
-}
-
-/* Style the hamburger menu */
-.topnav a.icon {
-  background: black;
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-/* Add a grey background color on mouse-over */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Style the active link (or home/logo) */
-.active {
-  background-color: #04AA6D;
-  color: white;
+  /* Add a grey background color on mouse-over */
+  #burger a:hover {
+    background-color: #ddd;
+    color: black;
+  }
 }

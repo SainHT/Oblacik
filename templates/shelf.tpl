@@ -1,6 +1,6 @@
 {config_load file="db.conf" section="AdminPanel"}
 {include file="header.tpl" title=foo}
-{include file="navbar.tpl" title=foo}
+{include file="navbar.tpl"}
 
 <div class="shelf-container">
     <div class="slides">

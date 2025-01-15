@@ -4,7 +4,7 @@
 <div class="login">
     <div class="form">
         {$message|default:''}
-        <h1>Upload here</h1>
+        <h2 style="padding:0px">Upload here</h2>
         <form id="uploadForm" method="post" enctype="multipart/form-data" >
             <label for="file">Choose a file</label>
             <input type="file" name="file" id="file" required>

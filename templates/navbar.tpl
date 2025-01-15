@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oblacik</title>
-
-    <!-- Change the name if unsing on a different account -->
-    <link rel="stylesheet" href="/~zivcic.k/oblacik/assets/css/w3.css">
-    <link rel="stylesheet" href="/~zivcic.k/oblacik/assets/css/design.css">
-    <link rel="stylesheet" href="/~zivcic.k/oblacik/assets/css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Honk&display=swap" rel="stylesheet">
-
-    <script src="/~zivcic.k/oblacik/assets/js/functions.js"></script>
-</head>
-<body>
+{config_load file="db.conf" section="AdminPanel"}
 
 <div id="navbar">
     <div id="navbarcomp">
@@ -23,23 +6,31 @@
         {foreach $categories as $key => $value}
         <a href="#{$key}">{$key|capitalize}</a>
         {/foreach}
+
+        {if $admin}
+            <a href="index.php?{#admin#}={#getter#}" style="float: right;">Admin Panel</a>
+        {/if}
+        <input type="text" placeholder="Search..">
+    </div>
+
+    <div id="burger">
+        <a href="javascript:void(0);" class="icon" onclick="toggleBurger()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
+        </a>
     </div>
 
     <div id="navbarmobile">
+        <input type="text" placeholder="Search..">
+
         <a href="index.php">Home</a>
         {foreach $categories as $key => $value}
         <a href="#{$key}">{$key|capitalize}</a>
         {/foreach}
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
+
+        {if $admin}
+            <a href="index.php?{#admin#}={#getter#}" style="float: right;">Admin Panel</a>
+        {/if}
+        
     </div>
 
-    <input type="text" placeholder="Search..">
-
-    {if $admin}
-      <a href="index.php?{#admin#}={#getter#}" style="float: right;">Admin Panel</a>
-    {/if}
 </div>
-
-</body>

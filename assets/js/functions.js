@@ -118,8 +118,8 @@ async function scaleImage(file, targetHeight) {
     });
 }
 
-function myFunction() {
-    var x = document.getElementById("myLinks");
+function toggleBurger() {
+    var x = document.getElementById("navbarmobile");
     if (x.style.display === "block") {
         x.style.display = "none";
     } else {
