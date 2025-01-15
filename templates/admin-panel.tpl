@@ -1,13 +1,29 @@
 {include file="header.tpl"}
 
 <div id="navbar">
-    <a href="index.php">Home</a>
-    <a href="admin.php">Users</a>
-    {foreach from=$categories key=key item=value}
-        <a href="admin.php?page={$key}">{$key|capitalize}</a>
-    {/foreach}
-    <input type="text" placeholder="Search..">
+    <div id="navbarcomp">
+        <a href="index.php">Home</a>
+        <a href="admin.php">Users</a>
+        {foreach from=$categories key=key item=value}
+            <a href="admin.php?page={$key}">{$key|capitalize}</a>
+        {/foreach}
+        <input type="text" placeholder="Search..">
+    </div>
 
+    <div id="burger">
+        <a href="javascript:void(0);" class="icon" onclick="toggleBurger()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
+        </a>
+    </div>
+
+    <div id="navbarmobile">
+        <input type="text" placeholder="Search..">
+        <a href="index.php">Home</a>
+        <a href="admin.php">Users</a>
+        {foreach from=$categories key=key item=value}
+            <a href="admin.php?page={$key}">{$key|capitalize}</a>
+        {/foreach}
+    </div>
 </div>
 
 <div class="login" style="width: 1500px;">

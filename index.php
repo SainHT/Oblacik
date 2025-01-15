@@ -65,12 +65,13 @@ if (array_key_exists($page, $pages)) {
 }
 
 //admin panel
-$smarty->configLoad('db.conf', 'AdminPanel');
-$admin_conf = $smarty->getConfigVars('admin');
-$getter = $smarty->getConfigVars('getter');
+// $smarty->configLoad('db.conf', 'AdminPanel');
+// $admin_conf = $smarty->getConfigVars('admin');
+// $getter = $smarty->getConfigVars('getter');
 
-$admin = isset($_GET[$admin_conf]) ? $_GET[$admin_conf] : '';
-if ($admin == $getter && $_SESSION['admin'] == 1 && $logged != NULL) {
-    
-    header('Location: admin.php');
-}
+// $admin = isset($_GET[$admin_conf]) ? $_GET[$admin_conf] : '';
+// if ($admin == $getter && $_SESSION['admin'] == 1 && $logged != NULL) {
+//     header('Location: admin.php');
+// }
+
+?>

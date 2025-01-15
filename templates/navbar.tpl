@@ -8,7 +8,7 @@
         {/foreach}
 
         {if $admin}
-            <a href="index.php?{#admin#}={#getter#}" style="float: right;">Admin Panel</a>
+            <a href="admin.php" style="float: right;">Admin Panel</a>
         {/if}
         <input type="text" placeholder="Search..">
     </div>
@@ -28,7 +28,7 @@
         {/foreach}
 
         {if $admin}
-            <a href="index.php?{#admin#}={#getter#}" style="float: right;">Admin Panel</a>
+            <a href="admin.php">Admin Panel</a>
         {/if}
         
     </div>
