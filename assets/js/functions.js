@@ -118,6 +118,19 @@ async function scaleImage(file, targetHeight) {
     });
 }
 
+async function favourite(upld_id) {
+    const id = upld_id;
+    const formData = new FormData();
+
+    formData.append('id', id);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'favourites.php', true);
+    xhr.send(formData);
+
+    await new Promise(resolve => xhr.onloadend = resolve);
+}
+
 function myFunction() {
     var x = document.getElementById("myLinks");
     if (x.style.display === "block") {

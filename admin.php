@@ -9,6 +9,14 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
     header('Location: index.php');
 }
 
+//error codes
+$error_code = isset($_SESSION['error_code']) ? $_SESSION['error_code'] : NULL;
+if ($error_code != NULL) {
+    $smarty->assign('urgency', strpos($error_code, 'success') !== false);
+    $smarty->assign('error_msg', $error_code);
+    $_SESSION['error_code'] = NULL;
+} 
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'users';
 $pages = array(
     'users'  => 'oblacik_users',

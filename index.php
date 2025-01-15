@@ -19,42 +19,13 @@ else {
     $smarty->assign('admin', $_SESSION['admin'] == 1 ? true : false);
 }
 
-//register
-$reg_code = isset($_SESSION['reg-code']) ? $_SESSION['reg-code'] : NULL;
-$reg_msg = array(
-    0 => 'Registration successful',
-    1 => 'Registration failed',
-    2 => 'Email already in use',
-    3 => 'Passwords do not match'
-);
-
-if(array_key_exists($reg_code, $reg_msg)) {
-    $smarty->assign('reg_message', $reg_msg[$reg_code]);
+//error codes
+$error_code = isset($_SESSION['error_code']) ? $_SESSION['error_code'] : NULL;
+if ($error_code != NULL) {
+    $smarty->assign('urgency', strpos($error_code, 'success') !== false);
+    $smarty->assign('error_msg', $error_code);
+    $_SESSION['error_code'] = NULL;
 } 
-else {
-    $smarty->assign('reg_message', '');
-}
-
-//upload
-$code = isset($_SESSION['upld-code']) ? $_SESSION['upld-code'] : NULL;
-$code_msg = array(
-    0 => 'File upload successfully',
-    1 => 'File uploaded failed',
-    2 => 'File already exists',
-    3 => 'User not logged in',
-    4 => 'Thumbnail is not an image',
-);
-
-if(array_key_exists($code, $code_msg)) {
-    $smarty->assign('message', $code_msg[$code]);
-    if ($code == 0) {
-        $smarty->assign('data', $_SESSION["upld-data"]);
-    }
-    $_SESSION['upld-code'] = NULL;
-} 
-else {
-    $smarty->assign('message', '');
-}
 
 //page
 $page = isset($_GET['page']) ? $_GET['page'] : 'index';

@@ -36,6 +36,7 @@ p {
   overflow: hidden;
   background-color: rgb(67, 25, 78);
   padding: 20px 10px;
+
 }
 
 .header a {
@@ -82,8 +83,20 @@ p {
 }
 
 .slide {
+  position: relative;
   box-sizing: border-box;
   margin: 10px; 
+}
+
+.slide .fav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  background-color: rgb(250, 189, 68);
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
 }
 
 .slide img {
@@ -94,9 +107,10 @@ p {
 }
 
 
-    /* Style the navbar */
+/* Style the navbar */
 #navbar {
   position: sticky;
+  z-index: 100;
   top: 0;
   overflow: hidden;
   background-color: #150619;

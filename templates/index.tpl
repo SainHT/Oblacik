@@ -29,7 +29,11 @@
             {else}
               <img src="{$default_img}" alt="{$item.name}">
             {/if}
-        </a></div>  {* src="{$item.cover}" - add when thumbnails are done*}
+        </a>
+            {if $logged}
+              <button class="fav" type="button" onclick="favourite({$item.upload_ID})">❤</button>
+            {/if}
+        </div>
       {/foreach}
     </div>
   </div>

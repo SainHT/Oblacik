@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oblacik</title>
 
-    <!-- Change the name if unsing on a different account -->
     <link rel="stylesheet" href="/~{#user#}/oblacik/assets/css/w3.css">
     <link rel="stylesheet" href="/~{#user#}/oblacik/assets/css/design.css">
     <link rel="stylesheet" href="/~{#user#}/oblacik/assets/css/styles.css">
@@ -36,3 +35,24 @@
     </div>
     <a href="#profile" class="profpic"><img src="https://art.pixilart.com/sr2f2eafaa19c82.png" alt="Avatar" class="avatar"></a>
 </div>
+{if $error_msg}
+    <span class="pop_wrapper" id="error-popup">
+        {if $urgency}
+            <span class="popup" style="background: rgb(0, 255, 0)">{$error_msg|default:''}</span>
+        {else}
+            <span class="popup">{$error_msg|default:''}</span>
+        {/if}
+    </span>
+    <script>
+        setTimeout(function() {
+            var popup = document.getElementById('error-popup');
+            if (popup) {
+            popup.style.display = 'none';
+            }
+        }, 5000);
+
+        document.getElementById('error-popup').addEventListener('click', function() {
+            this.style.display = 'none';
+        });
+    </script>
+{/if}
