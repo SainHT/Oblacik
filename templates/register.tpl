@@ -12,7 +12,7 @@
             <input type="email"    name="email"    placeholder="email"    id="email"
             pattern="^[\w.-]+@[\w.-]+\.[\w]+$" required/>
             
-            <input type="submit" class="w3-button w3-green" value="Create"/>
+            <input type="submit" class="w3-button w3-purple" value="Create"/>
             <p class="message">Already registered? <a href="index.php?page=log">Sign In</a></p>
         </form>
     </div>

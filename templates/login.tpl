@@ -6,7 +6,7 @@
             <input type="text"     name="username" placeholder="username or email" required/>
             <input type="password" name="password" placeholder="password" required/>
 
-            <input type="submit" class="w3-button w3-green" value="Sign In"/>
+            <input type="submit" class="w3-button w3-purple" value="Sign In"/>
             <p class="message">Not registered? <a href="index.php?page=reg">Create an account</a></p>
         </form>
     </div>

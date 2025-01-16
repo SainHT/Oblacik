@@ -24,7 +24,7 @@
 
         <a href="index.php">Home</a>
         {foreach $categories as $key => $value}
-        <a href="#{$key}">{$key|capitalize}</a>
+        <a href="index.php?page=shelf&type={$key}">{$key|capitalize}</a>
         {/foreach}
 
         {if $admin}

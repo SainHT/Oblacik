@@ -40,21 +40,32 @@ $pages = array(
     'shelf' => 'shelf.tpl',
 );
 
+$smarty->assign('default_img', 'https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg');
+
+$file_categories = array(
+    'books' => 'books',
+    'movies' => 'movies',
+    'photos' => 'photos',
+    'others' => 'others',
+);
+
 if (array_key_exists($page, $pages)) {
     if($page == 'shelf'){
         $type = isset($_GET['type']) ? $_GET['type'] : '';
         $smarty->assign('type', $type);
+    
+        $stmt = $db->prepare('SELECT * FROM `oblacik_' . $type . '` ORDER BY `ID` DESC');
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $files = $result->fetch_all(MYSQLI_ASSOC);
+
+        $file_categories[$type] = $files;
+        $smarty->assign('categories', $file_categories);
     }
     
     $smarty->display($pages[$page]);
+    
 } else {
-    $file_categories = array(
-        'books' => 'books',
-        'movies' => 'movies',
-        'photos' => 'photos',
-        'others' => 'others',
-    );
-
     foreach ($file_categories as $category) {
         $stmt = $db->prepare('SELECT * FROM `oblacik_' . $category . '` ORDER BY `ID` DESC LIMIT 13');
         $stmt->execute();
@@ -63,8 +74,6 @@ if (array_key_exists($page, $pages)) {
         $file_categories[$category] = $files;
     }
 
-
-    $smarty->assign('default_img', 'https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg');
     $smarty->assign('categories', $file_categories);
 
     $smarty->display('index.tpl');
