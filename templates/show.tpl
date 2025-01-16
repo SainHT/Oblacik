@@ -3,8 +3,8 @@
 {include file="navbar.tpl" title=foo}
 
 {if $file}
-    <div style="display: flex; justify-content: space-between; height: 75vh;">
-      <div id="mediabox" style="width: 48%; margin: 10px;">
+    <div style="min-height: 75vh;" class="w3-row">
+      <div id="mediabox" style="padding: 10px; height:70vh;" class="w3-col s12 m12 l7">
         {if $file_type == 'video/mp4' || $file_type == 'video/webm' || $file_type == 'video/ogg'}
           <video id="media" controls style="width: 100%; height: 100%;">
             <source src="{$file.source_address}" type="{$file_type}">
@@ -22,7 +22,7 @@
         {/if}
       </div>
 
-      <div id="media_accesories" style="width: 48%; margin: 10px;">
+      <div id="media_accesories" style="padding: 10px;" class="w3-col s12 m12 l5">
         <h3>{$file.name}</h3><br>
         <p1>Content</p1>
         <p>{$file.description}</p>

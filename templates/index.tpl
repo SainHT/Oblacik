@@ -2,9 +2,6 @@
 {include file="header.tpl" title=foo}
 {include file="navbar.tpl"}
 
-<p>This site will grow as we add more ...</p>
-</div>
-
 {foreach $categories as $category => $items}
   <h2>{$category|capitalize}</h2>
   <div class="slideshow-container">

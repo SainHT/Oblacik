@@ -33,11 +33,11 @@ $pages = array(
     'reg' => 'register.tpl',
     'log' => 'login.tpl',
     'upld' => 'upload.tpl',
-    'books' => 'book_filetype.tpl',
-    'photos' => 'book_filetype.tpl',
-    'others' => 'book_filetype.tpl',
-    'movies' => 'book_filetype.tpl',
     'shelf' => 'shelf.tpl',
+    'books' => 'show.tpl',
+    'photos' => 'show.tpl',
+    'others' => 'show.tpl',
+    'movies' => 'show.tpl',
 );
 
 $smarty->assign('default_img', 'https://img.freepik.com/premium-photo/purple-background-with-purple-background-that-says-purple_517312-43531.jpg');

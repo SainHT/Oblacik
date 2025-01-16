@@ -109,7 +109,9 @@ header svg{
 }
 
 body {
-  background: #b852b8;  
+  background: #b852b8;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .pop_wrapper {
@@ -155,3 +157,11 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+footer {
+  background-color: rgb(67, 25, 78);
+  padding: 10px 10px;
+  text-align: center;
+}
+
+

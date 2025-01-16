@@ -1,6 +1,7 @@
-<footer style="background-color: rgb(67, 25, 78);
-padding: 10px 10px;
-display: flex;
-align-items: cente;">© 2025 Kiko a spolužiačka</footer>
+<br>
+<footer>
+    This site will grow as we add more ... <br>
+    © 2025 Kiko a spolužiačka
+</footer>
 </BODY>
 </HTML>
