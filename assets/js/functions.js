@@ -134,9 +134,19 @@ async function favourite(upld_id) {
     await new Promise(resolve => xhr.onloadend = resolve);
 }
 
-$(".heart.fa").click(function() {
-    $(this).toggleClass("fa-heart fa-heart-o");
-  });
+async function toggleFavourite(button, uploadID) {
+    var heartIcon = document.getElementById('heart-' + uploadID);
+    if (heartIcon.classList.contains('fa-heart-o')) {
+    heartIcon.classList.remove('fa-heart-o');
+    heartIcon.classList.add('fa-heart');
+    } else {
+    heartIcon.classList.remove('fa-heart');
+    heartIcon.classList.add('fa-heart-o');
+    }
+
+    await favourite(uploadID);
+    location.reload();
+  }
 
 function toggleBurger() {
     var x = document.getElementById("navbarmobile");

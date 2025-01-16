@@ -31,7 +31,11 @@
           <div id="download_butt">DOWNLOAD</div>
         </a>
         {if $logged}
-          <button class="fav" type="button" onclick="favourite({$file.upload_ID})">❤</button>
+          <button class="fav" type="button" onclick="toggleFavourite(this, {$file.upload_ID})">
+          <div>
+              <i id="heart-{$file.upload_ID}" class="heart fa fa-{if $file.upload_ID|in_array:$favourites}heart{else}heart-o{/if}"></i>
+          </div>
+          </button>
         {/if}
       </div>
     </div>

@@ -21,7 +21,11 @@
             </div>
         </a>
             {if $logged}
-              <button class="fav" type="button" onclick="favourite({$item.upload_ID})">❤</button>
+              <button class="fav" type="button" onclick="toggleFavourite(this, {$item.upload_ID})">
+              <div>
+                  <i id="heart-{$item.upload_ID}" class="heart fa fa-{if $item.upload_ID|in_array:$favourites}heart{else}heart-o{/if}"></i>
+              </div>
+              </button>
             {/if}
         </div>
       {/foreach}

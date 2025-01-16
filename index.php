@@ -49,6 +49,15 @@ $file_categories = array(
     'others' => 'others',
 );
 
+//get favourites
+$stmt = $db->prepare('SELECT * FROM `oblacik_favourites` WHERE `user_id` = ?');
+$stmt->bind_param('i', $logged);
+$stmt->execute();
+$result = $stmt->get_result();
+$favourites = $result->fetch_all(MYSQLI_ASSOC);
+$favourites = array_column($favourites, 'upload_ID');
+$smarty->assign('favourites', $favourites);
+
 if (array_key_exists($page, $pages)) {
     $smarty->assign('categories', $file_categories);
     if($page == 'shelf'){
