@@ -157,3 +157,19 @@ function toggleBurger() {
     }
 }
 
+function filterItems() {
+    var input, filter, items, text, i;
+    input = document.getElementById('searchInput') || document.getElementById('searchInputMobile');
+    filter = input.value.toUpperCase();
+    items = document.getElementsByClassName('thumbnail-text');
+
+    for (i = 0; i < items.length; i++) {
+        text = items[i].textContent || items[i].innerText;
+        if (text.toUpperCase().indexOf(filter) > -1) {
+            items[i].parentElement.parentElement.parentElement.style.display = "";
+        } else {
+            items[i].parentElement.parentElement.parentElement.style.display = "none";
+        }
+    }
+}
+

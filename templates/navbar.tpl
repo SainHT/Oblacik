@@ -10,7 +10,7 @@
         {if $admin}
             <a href="admin.php" style="float: right;">Admin Panel</a>
         {/if}
-        <input type="text" placeholder="Search..">
+        <input type="text" id="searchInput" placeholder="Search.." onkeyup="filterItems()">
     </div>
 
     <div id="burger">
@@ -20,7 +20,7 @@
     </div>
 
     <div id="navbarmobile">
-        <input type="text" placeholder="Search..">
+        <input type="text" id="searchInputMobile" placeholder="Search.." onkeyup="filterItems()">
 
         <a href="index.php">Home</a>
         {foreach $categories as $key => $value}
