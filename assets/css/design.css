@@ -60,6 +60,7 @@ header svg{
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
+  min-height: 81.4vh;
 }
 .form {
   position: relative;

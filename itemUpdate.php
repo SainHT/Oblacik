@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try{
         foreach ($keys as $key) {
             //hash password
-            if ($key == 'password' && $user[$key] != '') {
-                $user[$key] = password_hash($user[$key], PASSWORD_DEFAULT);
+            if ($key == 'password' && isset($_POST[$key])) {
+                $user[$key] = password_hash($_POST[$key], PASSWORD_DEFAULT);
                 continue;
             } 
             else if ($key == 'privilege') {

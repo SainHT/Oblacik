@@ -5,9 +5,12 @@ require 'dbconnect.php';  //db_connection
 $smarty = new \Smarty\Smarty;
 
 session_start();
-if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1 || !isset($_SESSION['id'])) {
     header('Location: index.php');
 }
+
+$smarty->assign('logged', true);
+$smarty->assign('user', $_SESSION['user']);
 
 //error codes
 $error_code = isset($_SESSION['error_code']) ? $_SESSION['error_code'] : NULL;
