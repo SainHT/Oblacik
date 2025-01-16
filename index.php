@@ -36,7 +36,7 @@ $pages = array(
     'books' => 'book_filetype.tpl',
     'photos' => 'book_filetype.tpl',
     'others' => 'book_filetype.tpl',
-    'movies' => 'movie_filetype.tpl',
+    'movies' => 'book_filetype.tpl',
     'shelf' => 'shelf.tpl',
 );
 
@@ -50,6 +50,7 @@ $file_categories = array(
 );
 
 if (array_key_exists($page, $pages)) {
+    $smarty->assign('categories', $file_categories);
     if($page == 'shelf'){
         $type = isset($_GET['type']) ? $_GET['type'] : '';
         $smarty->assign('type', $type);
@@ -61,6 +62,26 @@ if (array_key_exists($page, $pages)) {
 
         $file_categories[$type] = $files;
         $smarty->assign('categories', $file_categories);
+    }
+    elseif ($page == 'books' || $page == 'photos' || $page == 'others' || $page == 'movies') {
+        $desired_ID = isset($_GET['id']) ? $_GET['id'] : null;
+        if ($desired_ID == null) {
+            header('Location: index.php');
+        }
+
+        $stmt = $db->prepare('SELECT * FROM `oblacik_' . $file_categories[$page] . '` WHERE `ID` = ?');
+        $stmt->bind_param('i', $desired_ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $files = $result->fetch_all(MYSQLI_ASSOC);
+        $file_type = mime_content_type($files[0]['source_address']);
+
+        if (count($files) == 0) {
+            header('Location: index.php');
+        }
+        
+        $smarty->assign('file_type', $file_type);
+        $smarty->assign('file', $files[0]);
     }
     
     $smarty->display($pages[$page]);

@@ -8,12 +8,17 @@
   <div class="shelf-container">
     <div id="shelf_slides">
       {foreach $items as $item}
-        <div class="slide"><a href="index.php?page={$category}&id={$item.ID}">
+        <div class="slide w3-display-container"><a href="index.php?page={$category}&id={$item.ID}">
             {if $item.thumbnail}
               <img src="/~{#user#}/oblacik/assets/img/thumbnails/{$item.thumbnail}" alt="{$item.name}">
             {else}
               <img src="{$default_img}" alt="{$item.name}">
             {/if}
+            <div class="w3-padding thumbnail-overlay">
+              <div class="thumbnail-text">
+                  {$item.name}
+              </div>
+            </div>
         </a>
             {if $logged}
               <button class="fav" type="button" onclick="favourite({$item.upload_ID})">❤</button>
