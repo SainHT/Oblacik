@@ -35,6 +35,15 @@ p {
   margin: 10;
 }
 
+.footer {
+  overflow: hidden;
+  background-color: rgb(67, 25, 78);
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header {
   font-family: 'Honk', serif;
   overflow: hidden;
