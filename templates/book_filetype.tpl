@@ -22,21 +22,22 @@
         {/if}
       </div>
 
-      <div id="mediaaccesories" style="width: 48%; margin: 10px;">
+      <div id="media_accesories" style="width: 48%; margin: 10px;">
         <h3>{$file.name}</h3><br>
         <p1>Content</p1>
         <p>{$file.description}</p>
-
-        <a href="{$file.source_address}" download>
-          <div id="download_butt">DOWNLOAD</div>
-        </a>
-        {if $logged}
-          <button class="fav" type="button" onclick="toggleFavourite(this, {$file.upload_ID})">
-          <div>
-              <i id="heart-{$file.upload_ID}" class="heart fa fa-{if $file.upload_ID|in_array:$favourites}heart{else}heart-o{/if}"></i>
-          </div>
-          </button>
-        {/if}
+        <div id="button_wrapper">
+          <a style="width: 80%" href="{$file.source_address}" download>
+            <div id="download_butt">DOWNLOAD</div>
+          </a>
+          {if $logged}
+            <button class="fav" type="button" onclick="toggleFavourite(this, {$file.upload_ID})">
+            <div>
+                <i id="heart-{$file.upload_ID}" class="heart fa fa-{if $file.upload_ID|in_array:$favourites}heart{else}heart-o{/if}"></i>
+            </div>
+            </button>
+          {/if}
+        </div>
       </div>
     </div>
 {/if}

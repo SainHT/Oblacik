@@ -24,8 +24,8 @@
     <div id="profbuttons">
         {if $logged} 
             <div id="eachprofbutton">
-                <button onclick="location.href='logout.php'">Logout</button>
-                <button onclick="location.href='index.php?page=upld'">Upload</button>
+                <button class="topbut" onclick="location.href='index.php?page=upld'">Upload</button>
+                <button class="topbut" onclick="location.href='logout.php'">Logout</button>
             </div>
             {$user} <!--is logged in-->
         {else}
