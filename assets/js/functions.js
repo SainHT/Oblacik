@@ -119,6 +119,9 @@ async function scaleImage(file, targetHeight) {
 }
 
 async function favourite(upld_id) {
+    var h = document.getElementById("heart");
+    
+
     const id = upld_id;
     const formData = new FormData();
 
@@ -130,6 +133,10 @@ async function favourite(upld_id) {
 
     await new Promise(resolve => xhr.onloadend = resolve);
 }
+
+$(".heart.fa").click(function() {
+    $(this).toggleClass("fa-heart fa-heart-o");
+  });
 
 function toggleBurger() {
     var x = document.getElementById("navbarmobile");

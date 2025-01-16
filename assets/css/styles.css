@@ -1,6 +1,6 @@
 body {
   background-color: rgb(207, 83, 174);
-  background-image: url("/~mrazova.b/oblacik/assets/img/oblacik_bg.svg");
+  background-image: url("/~mrazova.b/oblacik/assets/img/oblacik_bgdark.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -201,6 +201,12 @@ p {
   width: 100%;
   display: flex;
 }
+
+.heart {
+  font-size: 25px;
+    color:red;
+}
+
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 1000px) {
