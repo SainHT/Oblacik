@@ -19,6 +19,13 @@ $description = $_POST['description'];
 //bind the chunks together of the file
 $chunks = $_POST['file_chunks'];
 $target_file = "files/" . basename($fileName);
+
+if (file_exists($target_file)) {
+    echo json_encode(array('status' => 'File already exists'));
+    $_SESSION['error_code'] = 'File already exists';
+    exit();
+}
+
 $fp = fopen($target_file, 'w');
 for ($i = 0; $i < $chunks; $i++) {
     $chunkFile = $target_file . '.part' . $i;

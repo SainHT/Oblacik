@@ -84,12 +84,14 @@ if (array_key_exists($page, $pages)) {
         $result = $stmt->get_result();
         $files = $result->fetch_all(MYSQLI_ASSOC);
         $file_type = mime_content_type($files[0]['source_address']);
+        $file_type_short = explode('/', $file_type)[0];
 
         if (count($files) == 0) {
             header('Location: index.php');
         }
         
         $smarty->assign('file_type', $file_type);
+        $smarty->assign('file_type_short', $file_type_short);
         $smarty->assign('file', $files[0]);
     }
     

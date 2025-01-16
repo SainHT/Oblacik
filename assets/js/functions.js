@@ -39,6 +39,7 @@ async function uploadManager() {
     xhr.send(formData);
 
     await new Promise(resolve => xhr.onloadend = resolve);
+    location.reload();
 }
 
 async function uploadFile(file, dir) {

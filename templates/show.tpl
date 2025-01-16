@@ -5,20 +5,20 @@
 {if $file}
     <div style="min-height: 75vh;" class="w3-row">
       <div id="mediabox" style="padding: 10px; height:70vh;" class="w3-col s12 m12 l7">
-        {if $file_type == 'video/mp4' || $file_type == 'video/webm' || $file_type == 'video/ogg'}
+        {if $file_type_short == "video"}
           <video id="media" controls style="width: 100%; height: 100%;">
             <source src="{$file.source_address}" type="{$file_type}">
             Your browser does not support the video tag.
           </video>
-        {elseif $file_type == 'audio/mpeg' || $file_type == 'audio/ogg' || $file_type == 'audio/wav'}
+        {elseif $file_type_short == "audio"}
           <audio id="media" controls style="width: 100%; height: 100%;">
             <source src="{$file.source_address}" type="{$file_type}">
             Your browser does not support the audio tag.
           </audio>
-        {elseif $file_type == 'application/pdf'}
-          <embed src="{$file.source_address}" type="application/pdf" width="100%" height="100%" />
-        {else}
+        {elseif $file_type_short == "image"}
           <img src="{$file.source_address}" alt="{$file.name}" id="media" style="width: 100%; height: 100%;">
+        {else}
+          <embed src="{$file.source_address}" type="{$file_type}" width="100%" height="100%" />
         {/if}
       </div>
 
