@@ -50,12 +50,12 @@ $file_categories = array(
 );
 
 //get favourites
-$stmt = $db->prepare('SELECT * FROM `oblacik_favourites` WHERE `user_id` = ?');
+$stmt = $db->prepare('SELECT * FROM `oblacik_favourites` WHERE `user_id` = ? ORDER BY `ID` DESC');
 $stmt->bind_param('i', $logged);
 $stmt->execute();
 $result = $stmt->get_result();
-$favourites = $result->fetch_all(MYSQLI_ASSOC);
-$favourites = array_column($favourites, 'upload_ID');
+$favourites_full = $result->fetch_all(MYSQLI_ASSOC);
+$favourites = array_column($favourites_full, 'upload_ID');
 $smarty->assign('favourites', $favourites);
 
 if (array_key_exists($page, $pages)) {
@@ -98,12 +98,34 @@ if (array_key_exists($page, $pages)) {
     $smarty->display($pages[$page]);
     
 } else {
+    $fav_bar = array();
     foreach ($file_categories as $category) {
         $stmt = $db->prepare('SELECT * FROM `oblacik_' . $category . '` ORDER BY `ID` DESC LIMIT 13');
         $stmt->execute();
         $result = $stmt->get_result();
         $files = $result->fetch_all(MYSQLI_ASSOC);
         $file_categories[$category] = $files;
+
+        
+        if ($logged != NULL) {
+            
+            foreach ($favourites_full as $favourite) {
+                $stmt = $db->prepare('SELECT * FROM `oblacik_' . $category . '` WHERE `upload_ID` = ?');
+                $stmt->bind_param('i', $favourite['upload_ID']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $favourite = $result->fetch_all(MYSQLI_ASSOC);
+                if (is_array($favourite) && count($favourite) > 0) {
+                    array_push($favourite[0], 'type', $category);
+                    $favourite[0]['type'] = $category;
+                    array_push($fav_bar, $favourite[0]);
+                }
+            }
+        }
+    }
+
+    if (count($fav_bar) > 0) {
+        $smarty->assign('fav_bar', $fav_bar);
     }
 
     $smarty->assign('categories', $file_categories);
